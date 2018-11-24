@@ -1,1 +1,1 @@
-# fairflight-blockchain
+# fairflight
