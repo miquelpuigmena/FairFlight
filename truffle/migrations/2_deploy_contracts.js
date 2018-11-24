@@ -1,5 +1,5 @@
-var User = artifacts.require("User");
+var FlightTicket = artifacts.require("FlightTicket");
 
 module.exports = function(deployer) {
-  deployer.deploy(User);
+  deployer.deploy(FlightTicket);
 };

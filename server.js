@@ -16,30 +16,11 @@ router.use((req, res, next) => {
 
 var bcRouter = require('express').Router();
 
-bcRouter.post('/deployNewContract', function(req, res) {
-    blockchainEvents.deployNewContract(req.body.mongoID).then((response) => {
+bcRouter.post('/createTicket', function(req, res) {
+    blockchainEvents.createTicket().then((response) => {
         res.send(response)
     }) 
 })
-
-bcRouter.post('/addEvent', function(req, res) {
-    blockchainEvents.addEvent(req.body.address, req.body.timestamp, req.body.user, req.body.type, req.body.metadata).then((response) => {
-        res.send(response)
-    }) 
-})
-
-bcRouter.post('/getLogList', function(req, res) {
-    blockchainEvents.getLogList(req.body.address).then((response) => {
-        res.send(response)
-    }) 
-})
-
-bcRouter.get('/getCoinbase', function(req, res) {
-    blockchainEvents.getCoinbase().then((response) => {
-        res.send(response)
-    }) 
-})
-
 
 router.use('/blockchain', bcRouter)
 
