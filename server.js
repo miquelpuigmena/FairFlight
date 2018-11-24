@@ -16,10 +16,21 @@ router.use((req, res, next) => {
 
 var bcRouter = require('express').Router();
 
-bcRouter.post('/createTicket', function(req, res) {
-    blockchainEvents.createTicket().then((response) => {
+bcRouter.post('/createTicket', function (req, res) {
+    var flightinfo = {
+        "id": req.body.id,
+        "departure": req.body.departure,
+        "arrival": req.body.arrival,
+        "from": req.body.from,
+        "to": req.body.to,
+        "date": req.body.date,
+        "price": req.body.price,
+        "airline": req.body.airline
+    }
+    console.log('Post', flightinfo)
+    blockchainEvents.createTicket(flightinfo).then((response) => {
         res.send(response)
-    }) 
+    })
 })
 
 router.use('/blockchain', bcRouter)
