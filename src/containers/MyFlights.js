@@ -28,6 +28,8 @@ class MyFlights extends Component {
     componentDidMount() {
         axios.get('http://6c407f31.ngrok.io/blockchain/getFlightList',  {headers: {'Accept': 'application/json'}})
                 .then(response => this.setState({flights: response.data}));
+        this.props.userHasAuthenticated(true)
+        this.props.setUserName("Alex")
     }
 
     render() {

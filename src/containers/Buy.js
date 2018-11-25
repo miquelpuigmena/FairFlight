@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    Form,
     Header,
     Label,
     Table,
@@ -57,13 +58,9 @@ class MyFlights extends Component {
                         })}
                     </Table.Body>
                 </Table>
-                <p>{this.state.selectedFlight && this.state.selectedFlight.id}</p>
-                <div align="right">
+                <Form>
                     <img alt="Visa Checkout" className="v-button" role="button" src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png" />
-                    <script type="text/javascript" src="https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js">
-                    </script>
-                </div>
-
+                </Form>
             </div >
         );
     }
