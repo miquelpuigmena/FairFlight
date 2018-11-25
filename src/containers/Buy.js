@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    Button,
     Form,
     Header,
     Label,
@@ -10,17 +11,23 @@ const db = require('../mongoDB/flightlist.js')
 
 class MyFlights extends Component {
     state = {
-        flights: [{ '_id': 'EJ4567', 'departure': '16:00', 'arrival': '20:50', 'from': 'VIENA', 'to': 'LONDON GATWICK', 'date': '23-11-18', 'price': 120, 'airline': 'Easyjet', 'id': 'adf0da4e-1270-5855-cc3d-f87b2a6adde8' }, { '_id': 'UX4673', 'departure': '15:00', 'arrival': '22:50', 'from': 'MANCHESTER', 'to': 'BCN', 'date': '23-11-18', 'price': 58, 'airline': 'Iberia', 'id': '08d29926-36ef-31c5-fda9-e6a166305735' }],
+        flights: [],
         selectedFlight: null
     };
 
     componentDidMount() {
         axios.get('http://6c407f31.ngrok.io/blockchain/getBuyList',  {headers: {'Accept': 'application/json'}})
                 .then(response => this.setState({flights: response.data}));
+        this.props.userHasAuthenticated(true)
+        this.props.setUserName("Alex")
     }
 
     handleSelect(flight) {
         this.setState({ selectedFlight: flight });
+    }
+
+    handleSubmit(event){
+        this.props.history.push('/login')
     }
 
     render() {
@@ -58,9 +65,9 @@ class MyFlights extends Component {
                         })}
                     </Table.Body>
                 </Table>
-                <Form>
+                <Form onSubmit={this.handleSubmit}><Button >
                     <img alt="Visa Checkout" className="v-button" role="button" src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png" />
-                </Form>
+                </Button></Form>
             </div >
         );
     }
