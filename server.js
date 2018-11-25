@@ -18,7 +18,8 @@ var bcRouter = require('express').Router();
 
 bcRouter.post('/createTicket', function (req, res) {
     var flightinfo = {
-        "id": req.body.id,
+        "_id": req.body._id,
+        "userId": req.body.userId,
         "departure": req.body.departure,
         "arrival": req.body.arrival,
         "from": req.body.from,
@@ -27,8 +28,14 @@ bcRouter.post('/createTicket', function (req, res) {
         "price": req.body.price,
         "airline": req.body.airline
     }
-    console.log('Post', flightinfo)
     blockchainEvents.createTicket(flightinfo).then((response) => {
+        res.send(response)
+    })
+})
+
+bcRouter.get('/getBuyList', function (req, res) {
+
+    blockchainEvents.getBuyList().then((response) => {
         res.send(response)
     })
 })

@@ -6,28 +6,22 @@ mongoose.connect("mongodb://fairflight-mongo:oJQdgXjpwcf5nL7MJ38tY6B1rs4AZH2T1wr
     })
 
 
-var flitghSchema = new Schema({
+var buySchema = new Schema({
     _id: String,
-    blockchainId: String,
-    userId: String,
     departure: String,
     arrival: String,
     from: String,
     to: String,
     date: String,
     price: Number,
-    airline: String,
-    delay: Number,
-    percentRefund: Number,
-    totalRefund: Number
+    airline: String
 });
 
-var flightModel = mongoose.model('flightlist', flitghSchema)
+var buyModel = mongoose.model('buylist', buySchema)
 
-function addFlight(flightinfo) {
-    console.log('Inside addFlight', flightinfo)
-    var flight = new flightModel(flightinfo);
-    return flight.save()
+function getBuyList() {
+    console.log('Inside addFlight')
+    return buyModel.find({})
 }
 
-module.exports = { flightModel, addFlight }
+module.exports = { buyModel, getBuyList }

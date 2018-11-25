@@ -1,4 +1,4 @@
-pragma solidity ^0.4.4;
+pragma solidity ^0.4.24;
 
 contract FlightTicket {
     
@@ -21,13 +21,13 @@ contract FlightTicket {
 
     event flightValidation(string indexed userAccount, string indexed airlineAccount, uint indexed userRefund);
     
-    constructor(string flightNumber, string departure, string arrival, string from, string to, string date, uint price) public {
+    constructor(string  flightNumber, string  departure, string  arrival, string  from_, string  to, string  date, uint  price) public {
         owner = msg.sender;
         validator = msg.sender;
         _flightNumber = flightNumber;
         _departure = departure;
         _arrival = arrival;
-        _from = from;
+        _from = from_;
         _to = to;
         _date = date;
         _price = price;
