@@ -4,6 +4,7 @@ import {
     Label,
     Table,
 } from 'semantic-ui-react'
+const axios = require('axios')
 const db = require('../mongoDB/flightlist.js')
 
 class MyFlights extends Component {
@@ -13,7 +14,7 @@ class MyFlights extends Component {
     };
 
     componentDidMount() {
-        axios.get('https://localhost:5000/taula_disp',  {headers: {'Accept': 'application/json'}})
+        axios.get('http://6c407f31.ngrok.io/blockchain/getBuyList',  {headers: {'Accept': 'application/json'}})
                 .then(response => this.setState({flights: response.data}));
     }
 

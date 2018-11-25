@@ -3,6 +3,7 @@ import {
     Header,
     Table,
 } from 'semantic-ui-react'
+const axios = require('axios')
 
 class MyFlights extends Component {
     state = {
@@ -21,11 +22,11 @@ class MyFlights extends Component {
             "delay" : 60,
             "percentRefund" : 10,
             "totalRefund" : 12
-        }, { '_id': 'UX4673', 'departure': '15:00', 'arrival': '22:50', 'from': 'MANCHESTER', 'to': 'BCN', 'date': '23-11-18', 'price': 58, 'airline': 'Iberia', 'id': '08d29926-36ef-31c5-fda9-e6a166305735' }],
+        }],
     };
 
     componentDidMount() {
-        axios.get('https://localhost:5000/taula_compres',  {headers: {'Accept': 'application/json'}})
+        axios.get('http://6c407f31.ngrok.io/blockchain/getFlightList',  {headers: {'Accept': 'application/json'}})
                 .then(response => this.setState({flights: response.data}));
     }
 
