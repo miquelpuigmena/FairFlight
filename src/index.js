@@ -4,6 +4,8 @@ import App from './App';
 import { BrowserRouter as Router } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css';
 
+//ReactDOM.render(<Header />, document.getElementById("header"));
+
 ReactDOM.render(
     <Router>
       <App />

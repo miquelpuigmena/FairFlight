@@ -30,7 +30,23 @@
           subtotal: "11.00"
         }
       });
-      V.on("payment.success", function (payment) {window.location.replace("/myflights");}); //redirigir JSON i carregar
+      const axios = require('axios');
+
+      V.on("payment.success", function (payment) {
+        const data = {
+        "_id": "GH768",
+        "userId": "Sergi Sanchez",
+        "departure": "16:00",
+        "arrival": "20:50",
+        "from": "BCN",
+        "to": "LONDON LUTON",
+        "date": "23-11-18",
+        "price": 120,
+        "airline": "Easyjet",
+      };
+        axios.post('http://6c407f31.ngrok.io/blockchain/getBuyList',  { data });
+        window.location.replace("/myflights");
+      });
       V.on("payment.cancel", function (payment) { alert(JSON.stringify(payment)); });
       V.on("payment.error", function (payment, error) { alert(JSON.stringify(error)); });
     }
@@ -52,8 +68,8 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script type="text/javascript" src="https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js">
-    </script>
+  <script type="text/javascript" src="https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js">
+  </script>
 </body>
 
 </html>
