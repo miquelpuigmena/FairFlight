@@ -19,9 +19,14 @@ var buySchema = new Schema({
 
 var buyModel = mongoose.model('buylist', buySchema)
 
+function addFlight(flightinfo) {
+    var flight = new buyModel(flightinfo);
+    return flight.save()
+}
+
 function getBuyList() {
     console.log('Inside addFlight')
     return buyModel.find({})
 }
 
-module.exports = { buyModel, getBuyList }
+module.exports = { buyModel, getBuyList, addFlight }

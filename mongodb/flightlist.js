@@ -25,9 +25,29 @@ var flitghSchema = new Schema({
 var flightModel = mongoose.model('flightlist', flitghSchema)
 
 function addFlight(flightinfo) {
-    console.log('Inside addFlight', flightinfo)
     var flight = new flightModel(flightinfo);
     return flight.save()
 }
 
-module.exports = { flightModel, addFlight }
+function getFlightList() {
+    return flightModel.find({})
+}
+
+function findFlightbyId(flightNumber) {
+    return flightModel.findOne({ '_id': flightNumber })
+}
+
+function updateFlightInfo(flightNumber, _delay, _percentRefund, _totalRefund) {
+    return flightModel.update(
+
+        { _id: flightNumber },
+        { $set: { delay: _delay, percentRefund: _percentRefund, totalRefund: _totalRefund } },
+
+        function (err, raw) {
+            if (err) return handleError(err);
+            console.log('The raw response from Mongo was ', raw);
+        }
+    );
+}
+
+module.exports = { flightModel, addFlight, getFlightList, findFlightbyId, updateFlightInfo }

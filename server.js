@@ -33,9 +33,38 @@ bcRouter.post('/createTicket', function (req, res) {
     })
 })
 
+bcRouter.post('/validateFlight', function (req, res) {
+    blockchainEvents.validateFlight(req.body._id, req.body.delay).then((response) => {
+        res.send(response)
+    })
+})
+
+bcRouter.post('/addBuyFlight', function (req, res) {
+    var flightinfo = {
+        "_id": req.body._id,
+        "departure": req.body.departure,
+        "arrival": req.body.arrival,
+        "from": req.body.from,
+        "to": req.body.to,
+        "date": req.body.date,
+        "price": req.body.price,
+        "airline": req.body.airline
+    }
+    blockchainEvents.addBuyFlight(flightinfo).then((response) => {
+        res.send(response)
+    })
+})
+
 bcRouter.get('/getBuyList', function (req, res) {
 
     blockchainEvents.getBuyList().then((response) => {
+        res.send(response)
+    })
+})
+
+bcRouter.get('/getFlightList', function (req, res) {
+
+    blockchainEvents.getFlightList().then((response) => {
         res.send(response)
     })
 })
