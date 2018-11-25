@@ -28,6 +28,11 @@ class App extends Component {
     this.setState({ userName: name });
   }
 
+  handleLogout = event => {
+    this.userHasAuthenticated(false);
+    //falta redirect a /login
+  }
+  
   render(){
     const childProps = {
       isAuthenticated: this.state.isAuthenticated,
@@ -43,7 +48,7 @@ class App extends Component {
               <Container>
                 <Dropdown item text={this.state.userName}>
                   <Dropdown.Menu>
-                    <Dropdown.Item><Link to="/login">Log out</Link></Dropdown.Item>
+                    <Dropdown.Item onClick={this.handleLogout}>Log out</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
                 <Menu.Item as='a'><Link to="/buy">Buy</Link></Menu.Item>
