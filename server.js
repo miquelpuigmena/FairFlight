@@ -26,7 +26,8 @@ bcRouter.post('/createTicket', function (req, res) {
         "to": req.body.to,
         "date": req.body.date,
         "price": req.body.price,
-        "airline": req.body.airline
+        "airline": req.body.airline,
+        "visaData": JSON.stringify(req.body.visaData)
     }
     blockchainEvents.createTicket(flightinfo).then((response) => {
         res.send(response)

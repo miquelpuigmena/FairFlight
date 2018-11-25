@@ -25,7 +25,6 @@ function addFlight(flightinfo) {
 }
 
 function getBuyList() {
-    console.log('Inside addFlight')
     return buyModel.find({})
 }
 

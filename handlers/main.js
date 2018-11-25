@@ -8,7 +8,7 @@ var mongobuy = require('../mongodb/buylist.js')
 class BlockchainEvents {
 
     constructor() {
-        // this.provider = new Web3.providers.WebsocketProvider('ws://13.81.255.201:8545')
+        // this.provider = new Web3.providers.HttpProvider('http://40.117.129.48:8545')
         this.provider = new Web3.providers.HttpProvider('http://localhost:8545')
         this.web3 = new Web3(this.provider);
         this.web3.eth.getAccounts()
@@ -31,7 +31,6 @@ class BlockchainEvents {
                 arguments: [flightinfo['_id'], flightinfo['departure'], flightinfo['arrival'], flightinfo['from'], flightinfo['to'], flightinfo['date'], flightinfo['price']]
             }).send({ from: this.coinbase, gas: 10000000 })
                 .then((receipt) => {
-                    console.log('New ticket address is', receipt['_address'])
                     flightinfo['blockchainId'] = receipt['_address']
                     mongoflight.addFlight(flightinfo)
                         .then((error, response) => {

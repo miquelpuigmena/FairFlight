@@ -19,7 +19,8 @@ var flitghSchema = new Schema({
     airline: String,
     delay: Number,
     percentRefund: Number,
-    totalRefund: Number
+    totalRefund: Number,
+    visaData: String
 });
 
 var flightModel = mongoose.model('flightlist', flitghSchema)
