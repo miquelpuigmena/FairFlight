@@ -6,7 +6,7 @@ What it does:
 
 To solve this problem we decided to develop a service to help users worldwide to get these refunds easily. We can break out project into two distinct parts. One the one hand, he have designed a service to make flight refunds more transparent and easier for the client. On the other hand, we have developed a user friendly interface for the user to be able to purchase these flights.
 
-How I build it:
+How we build it:
 
 First of all, we have set a database that simulate airlines and their flights lists.
 
